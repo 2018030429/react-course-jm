@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+// import { Component } from "react";
 
 // * Creado en base a una función anónima
 const Componente = props => (<h2>{ props.message }</h2>);
