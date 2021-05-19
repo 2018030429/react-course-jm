@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
+import Componente from "./components/Component";
+
 function App() {
   let name = "Henry";
   let auth = true;
@@ -31,6 +33,9 @@ function App() {
           Learn React
         </a>
       </header>
+      <section>
+        <Componente message="Hey! I am here, the message is from props"/>
+      </section>
     </div>
   );
 }
