@@ -4,6 +4,7 @@ import './App.css';
 import Componente from "./components/Component";
 import Propiedades from "./components/Propiedades";
 import Estado from "./components/Estado";
+import Renderizado from "./components/RenderizadoCondicional";
 
 function App() {
   let name = "Henry";
@@ -50,6 +51,8 @@ function App() {
               />
             <hr/>
             <Estado/>
+            <hr/>
+            <Renderizado/>
           </section>
         </header>
       </div>
