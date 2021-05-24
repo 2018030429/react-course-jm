@@ -6,6 +6,7 @@ import Propiedades from "./components/Propiedades";
 import Estado from "./components/Estado";
 import Renderizado from "./components/RenderizadoCondicional";
 import RenderizadoElmnts from "./components/RenderizadoElementos";
+import Eventos from "./components/Eventos";
 
 function App() {
   let name = "Henry";
@@ -56,6 +57,8 @@ function App() {
             <Renderizado/>
             <hr/>
             <RenderizadoElmnts/>
+            <hr/>
+            <Eventos/>
           </section>
         </header>
       </div>
