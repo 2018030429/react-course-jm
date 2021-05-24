@@ -3,14 +3,14 @@ import './App.css';
 
 import Componente from "./components/Component";
 import Propiedades from "./components/Propiedades";
+import Estado from "./components/Estado";
 
 function App() {
   let name = "Henry";
   let auth = true;
-  let seasons = ["Spring", "Summer", "Autumn  ", "Winter"];
-  return (
-    <>
-      <section>
+  let seasons = ["Spring", "Summer", "Autumn", "Winter"];
+  return (    
+    
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -35,24 +35,24 @@ function App() {
           >
             Learn React
           </a>
+        <section>
+            <Componente message="Hey! I am here, the message is from props"/>
+            <hr/>
+            <Propiedades
+              cadena="This is a string"
+              numero={ 21 }
+              booleano={ true }
+              arreglo={ [1,2,3] }
+              objeto={{ nombre: 'Enrique', edad: 21 }}
+              reactElement={<i> Hello </i>}
+              funcion={num => num * num}
+              reactComponent={ <Componente message="I am a component"/> }
+              />
+            <hr/>
+            <Estado/>
+          </section>
         </header>
       </div>
-      </section>
-      <section>
-          <Componente message="Hey! I am here, the message is from props"/>
-          <hr/>
-          <Propiedades
-            cadena="This is a string"
-            numero={ 21 }
-            booleano={ true }
-            arreglo={ [1,2,3] }
-            objeto={{ nombre: 'Enrique', edad: 21 }}
-            reactElement={<i> Hello </i>}
-            funcion={num => num * num}
-            reactComponent={ <Componente message="I am a component"/> }
-          />
-      </section>
-    </>
   );
 }
 
