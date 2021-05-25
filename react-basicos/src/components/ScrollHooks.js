@@ -5,18 +5,18 @@ export default function ScrollHooks() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    console.log("Moviendo el scroll");
+    // console.log("Moviendo el scroll");
     const detectarScroll = () => setScrollY(window.pageYOffset);
     window.addEventListener('scroll', detectarScroll);
   }, [scrollY]);
 
   useEffect(() => {
-    console.log("Fase de Montaje");
+    // console.log("Fase de Montaje");
   }, []);
 
   useEffect(() => {
     return () => {
-      console.log("Fase de Desmontaje");
+      // console.log("Fase de Desmontaje");
     }
   });
 

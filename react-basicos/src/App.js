@@ -13,6 +13,7 @@ import AjaxApis from "./components/AjaxApis";
 import ContadorHooks from "./components/ContadorHooks";
 import ScrollHooks from "./components/ScrollHooks";
 import RelojHooks from "./components/relojHooks";
+import AjaxHooks from "./components/AjaxHooks";
 
 function App() {
   let name = "Henry";
@@ -81,6 +82,8 @@ function App() {
           <ScrollHooks/>
           <hr/>
           <RelojHooks/>
+          <hr/>
+          <AjaxHooks/>
         </section>
       </header>
     </div>
