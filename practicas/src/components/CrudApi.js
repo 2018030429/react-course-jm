@@ -4,22 +4,31 @@ import { helpHttp } from "../helpers/help.http";
 // * Components
 import CrudForm from "./CrudForm";
 import CrudTable from "./CrudTable";
+import Loader from "./Loader";
+import Message from "./Message";
 
 export default function CrudApi() {
 
   const [db, setDb] = useState([]);
   const [dataToEdit, setDataToEdit] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   
-  let api = helpHttp();
   let url = "http://localhost:5000/saints";
 
   useEffect(() => {
-    api.get(url).then(res => {
+    setLoading(true);
+    helpHttp().get(url).then(res => {
       if (!res.err) {
         setDb(res);
+        setError(null);
+      } else {
+        setDb(null);
+        setError(res);
       }
+      setLoading(false);
     });
-  }, []);
+  }, [url]);
 
   const createData = (data) => {
     data.id = Date.now();
@@ -54,11 +63,15 @@ export default function CrudApi() {
         dataToEdit={dataToEdit} 
         setDataToEdit={setDataToEdit}
       />
-      <CrudTable 
+      { loading && <Loader/> }
+      { error && <Message 
+        message={`Error ${ error.status }: ${ error.statusText }`} 
+        bgColor="#DC3545"/> }
+      { db && <CrudTable 
         data={db} 
         setDataToEdit={setDataToEdit} 
         deleteData={deleteData}
-      />
+      /> }
       </article>
     </div>
   );

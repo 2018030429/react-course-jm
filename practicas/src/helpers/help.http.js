@@ -17,8 +17,6 @@ export const helpHttp = () => {
 
     if (!options.body) delete options.body;
 
-    console.log(options);
-
     setTimeout(() => controller.abort(), 5000);
 
     return fetch(endpoint, options)
