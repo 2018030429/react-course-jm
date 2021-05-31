@@ -1,29 +1,29 @@
 {
   "saints": [
-    { 
-      "id": 1, 
+    {
+      "id": 1,
       "name": "Seiya",
-      "constellation": "Pegaso" 
+      "constellation": "Pegaso"
     },
-    { 
-      "id": 2, 
-      "name": "Shiryu", 
-      "constellation": "Dragón" 
+    {
+      "id": 2,
+      "name": "Shiryu",
+      "constellation": "Dragón"
     },
-    { 
-      "id": 3, 
+    {
+      "id": 3,
       "name": "Hyoga",
-      "constellation": "Cisne" 
+      "constellation": "Cisne"
     },
-    { 
-      "id": 4, 
-      "name": "Shun", 
-      "constellation": "Andrómeda" 
+    {
+      "id": 4,
+      "name": "Shun",
+      "constellation": "Andrómeda"
     },
-    { 
-      "id": 5, 
-      "name": "Ikki", 
-      "constellation": "Fénix" 
+    {
+      "id": 5,
+      "name": "Ikki",
+      "constellation": "Fénix"
     }
   ]
 }
