@@ -1,10 +1,11 @@
 import React from 'react'
 
-const SongLyrics = () => {
+const SongLyrics = ({ title, lyrics }) => {
   return (
-    <div>
-      <h2> Song Lyrics </h2>
-    </div>
+    <section>
+      <h2> { title } </h2>
+      <blockquote style={{ whiteSpace: "pre-wrap" }}> { lyrics || 'something happend'} </blockquote>
+    </section>
   )
 }
 

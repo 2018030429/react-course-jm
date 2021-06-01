@@ -12,16 +12,16 @@ const SongDetails = ({ search, lyric, bio }) => {
     <Fragment>
       { lyric.error || lyric.err || lyric.name === "AbortError" ? (
         <Message 
-          message={`Error: The ${search.song} song doesn't exist`} 
+          message={`Error: The <em>${search.song}</em> song doesn't exist`} 
           bgColor="#DC3545"/>
       ):(
-        <SongLyrics/> 
+        <SongLyrics title={ search.song } lyrics={ lyric.lyrics } /> 
       )}
       { bio.artists ? (
-        <SongArtist/>
+        <SongArtist artist={ bio.artists[0] }/>
       ):(
         <Message 
-          message={`Error: The artist ${ search.artist } doesn't exist`} 
+          message={`Error: The artist <em>${ search.artist }</em> doesn't exist`} 
           bgColor="#DC3545"/>
       )}
     </Fragment>
