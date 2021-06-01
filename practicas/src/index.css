@@ -10,7 +10,8 @@ html {
   box-sizing: inherit;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="email"] {
   border: thin solid #dedede;
   border-radius: 0.25rem;
   padding: .75rem;
