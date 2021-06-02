@@ -1,9 +1,29 @@
 import React from 'react'
 import { useForm } from '../hooks/useForm'
 
-const initialForm = {};
+const initialForm = {
+  name: "",
+  email: "",
+  subject: "",
+  comments: ""
+};
 
-const validationsForm = (form) => {} 
+const validationsForm = (form) => {
+  let errors = {};
+  
+  if (!form.name.trim()) {
+    errors.name = "'name' is required";
+  }
+  
+
+  return errors;
+} 
+
+let styles = {
+  fontWeight: "bold",
+  fontSize: "12px",
+  color: "#DC3545"
+}
 
 const ContactForm = () => {
 
@@ -15,7 +35,7 @@ const ContactForm = () => {
     handleBlur, 
     handleChange, 
     handleSubmit 
-  } = useForm(initialForm);
+  } = useForm(initialForm, validationsForm);
 
   return (
     <div>
@@ -27,9 +47,11 @@ const ContactForm = () => {
           placeholder="Albert Smith" 
           onChange={ handleChange } 
           onBlur={ handleBlur } 
-          value={form.name } 
+          value={ form.name } 
           required 
           />
+
+        { errors.name && <p style={ styles }>{ errors.name }</p> }
 
         <input 
           type="email" 
@@ -41,6 +63,8 @@ const ContactForm = () => {
           required 
           />
 
+        { errors.email && <p style={ styles }>{ errors.email }</p> }
+
         <input 
           type="text" 
           name="subject" 
@@ -50,6 +74,8 @@ const ContactForm = () => {
           value={ form.subject } 
           required 
           />
+
+        { errors.subject && <p style={ styles }>{ errors.subject }</p> }
 
         <textarea
           name="comments"
@@ -61,6 +87,8 @@ const ContactForm = () => {
           value={ form.comments } 
           required>
         </textarea>
+
+        { errors.comments && <p style={ styles }>{ errors.comments }</p> }
 
         <input 
           type="submit"
