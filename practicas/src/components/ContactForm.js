@@ -10,11 +10,29 @@ const initialForm = {
 
 const validationsForm = (form) => {
   let errors = {};
+  let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+  let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+  let regexComments = /^.{1,255}$/;
   
-  if (!form.name.trim()) {
+  if (!form.name.trim()) { 
     errors.name = "'name' is required";
+  } else if (!regexName.test(form.name.trim())) {
+    errors.name = "'name' only accept words and whitespaces";
+  } 
+
+  if (!form.email.trim()) {
+    errors.email = "'email' is required";
+  } else if (!regexEmail.test(form.email.trim())) {
+    errors.email = "'email' is invalid";
   }
-  
+
+  if (!form.subject.trim()) errors.subject = "'subject' is required";
+
+  if (!form.comments.trim()) {
+    errors.comments = "'comments' is required";
+  } else if (!regexComments.test(form.comments.trim())) {
+    errors.comments = "'comments' is exceeding 255 characters";
+  }
 
   return errors;
 } 
@@ -87,6 +105,7 @@ const ContactForm = () => {
           value={ form.comments } 
           required>
         </textarea>
+        <small> { form.comments.length } / 255 </small> <br/>
 
         { errors.comments && <p style={ styles }>{ errors.comments }</p> }
 
