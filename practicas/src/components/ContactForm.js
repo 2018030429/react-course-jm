@@ -1,4 +1,6 @@
 import React from 'react'
+import Loader from "./Loader";
+import Message from "./Message";
 import { useForm } from '../hooks/useForm'
 
 const initialForm = {
@@ -114,6 +116,8 @@ const ContactForm = () => {
           value="Send"
           />
       </form>
+      { loading && <Loader/> }
+      { response && <Message message="Form sended" bgColor="#DC3545"/> }
     </div>
   )
 }

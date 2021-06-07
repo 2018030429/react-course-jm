@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { helpHttp } from "../helpers/help.http";
 
 export const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
@@ -19,7 +20,31 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
   }
 
-  const handleSubmit = (e) => {}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors(validateForm(form));
+
+    if (Object.keys(errors).length === 0) {
+      alert("Sending form");
+      setLoading(true);
+      helpHttp()
+        .post("https://formsubmit.co/ajax/contrerasenrique973@email.com", {
+          body: form,
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+          }
+        })
+        .then(res => {
+          setLoading(false);
+          setResponse(true);
+          setForm(initialForm);
+          setTimeout(() => setResponse(false), 5000);
+        });
+    } else {
+      return;
+    }
+  }
 
   return {
     form, 
