@@ -2,6 +2,7 @@ import React from 'react'
 import { useModal } from '../hooks/useModal'
 import ContactForm from './ContactForm';
 import Modal from './Modal'
+import ModalPortal from './ModalPortal'
 import SongSearch from './SongSearch';
 
 const Modals = () => {
@@ -9,6 +10,7 @@ const Modals = () => {
   const [ isOpenModal2, openModal2, closeModal2 ] = useModal(false);
   const [ isOpenModal3, openModal3, closeModal3 ] = useModal(false);
   const [ isOpenModal4, openModal4, closeModal4 ] = useModal(false);
+  const [ isOpenModalPortal, openModalPortal, closeModalPortal ] = useModal(false);
 
   return (
     <div>
@@ -35,6 +37,15 @@ const Modals = () => {
       <Modal isOpen={ isOpenModal4 } closeModal={ closeModal4 }>
         <SongSearch/>
       </Modal>
+      <button onClick={ openModalPortal }> Modal Portal </button>
+      <ModalPortal isOpen={ isOpenModalPortal } closeModal={ closeModalPortal }>
+        <h3> Modal Portal </h3>
+        <p>
+          This is the modal content what is loaded in another DOM node where our app is loaded
+          Thanks React Portal
+        </p>
+        <img src="https://placeimg.com/400/400/tech" alt="tech" />
+      </ModalPortal>
     </div>
   )
 }
