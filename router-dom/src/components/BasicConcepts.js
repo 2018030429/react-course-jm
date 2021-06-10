@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Error404 from '../pages/Error404'
@@ -20,6 +20,8 @@ const BasicConcepts = () => {
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/user/:username" component={User} />
           <Route exact path="/products" component={Products} />
+          <Route exact path="/contacto" children={<Redirect to="/contact" />} />
+          <Route exact path="/acerca" children={<Redirect to="/about" />} />
           <Route path="*" component={Error404} />
         </Switch>
       </Router>
