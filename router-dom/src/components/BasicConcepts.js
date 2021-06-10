@@ -4,6 +4,7 @@ import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Error404 from '../pages/Error404'
 import Home from '../pages/Home'
+import Products from '../pages/Products'
 import User from '../pages/User'
 import ConceptMenu from './ConceptMenu'
 
@@ -18,6 +19,7 @@ const BasicConcepts = () => {
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/user/:username" component={User} />
+          <Route exact path="/products" component={Products} />
           <Route path="*" component={Error404} />
         </Switch>
       </Router>

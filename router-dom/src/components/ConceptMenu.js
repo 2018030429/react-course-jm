@@ -34,6 +34,11 @@ const ConceptMenu = () => {
           <Link to="/user/enrique">Enrique</Link>
           <Link to="/user/isaias">Isaias</Link>
         </li>
+        <li>
+          <span> Consult Params </span>
+          <br/>
+          <Link to="/products">Products</Link>
+        </li>
       </ol>
     </nav>
   )
