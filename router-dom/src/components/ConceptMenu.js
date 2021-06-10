@@ -50,6 +50,12 @@ const ConceptMenu = () => {
           <br/>
           <Link to="/react">React</Link>
         </li>
+        <li>
+          <span> Private Routes </span>
+          <br/>
+          <Link to="/login">Login</Link>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
       </ol>
     </nav>
   )
