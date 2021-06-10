@@ -5,6 +5,7 @@ import Contact from '../pages/Contact'
 import Error404 from '../pages/Error404'
 import Home from '../pages/Home'
 import Products from '../pages/Products'
+import ReactTopics from '../pages/ReactTopics'
 import User from '../pages/User'
 import ConceptMenu from './ConceptMenu'
 
@@ -22,6 +23,7 @@ const BasicConcepts = () => {
           <Route exact path="/products" component={Products} />
           <Route exact path="/contacto" children={<Redirect to="/contact" />} />
           <Route exact path="/acerca" children={<Redirect to="/about" />} />
+          <Route path="/react" component={ReactTopics} />
           <Route path="*" component={Error404} />
         </Switch>
       </Router>
