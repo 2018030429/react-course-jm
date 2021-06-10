@@ -28,6 +28,12 @@ const ConceptMenu = () => {
           <NavLink exact to="/about" activeClassName="active">About</NavLink>
           <NavLink exact to="/no-exist" activeClassName="active">404 Error</NavLink>
         </li>
+        <li>
+          <span> Params </span>
+          <br/>
+          <Link to="/user/enrique">Enrique</Link>
+          <Link to="/user/isaias">Isaias</Link>
+        </li>
       </ol>
     </nav>
   )
