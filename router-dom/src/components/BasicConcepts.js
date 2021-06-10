@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route, Switch, HashRouter, Link } from 'react-router-dom'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Dashboard from '../pages/Dashboard'
@@ -15,6 +15,21 @@ import PrivateRoute from './PrivateRoute'
 const BasicConcepts = () => {
   return (
     <div>
+      <h2> Hash Router </h2>
+      <HashRouter>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/about">About</Link>
+        </nav>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/contact" component={Contact} />
+          <Route path="*" component={Error404} />
+        </Switch>
+      </HashRouter>
+      <hr/>
       <h2> Basic Concepts </h2>
       <Router>
         <ConceptMenu/>
