@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { HashRouter, NavLink, Route, Switch } from "react-router-dom";
 import { helpHttp } from "../helpers/help.http";
+import Error404 from "../pages/Error404";
 
 // * Components
 import CrudForm from "./CrudForm";
@@ -95,24 +97,43 @@ export default function CrudApi() {
 
   return (
     <div>
-      <h2> CRUD - API </h2>
-      <article className="grid-1-2">
-      <CrudForm 
-        createData={createData} 
-        updateData={updateData} 
-        dataToEdit={dataToEdit} 
-        setDataToEdit={setDataToEdit}
-      />
-      { loading && <Loader/> }
-      { error && <Message 
-        message={`Error ${ error.status }: ${ error.statusText }`} 
-        bgColor="#DC3545"/> }
-      { db && <CrudTable 
-        data={db} 
-        setDataToEdit={setDataToEdit} 
-        deleteData={deleteData}
-      /> }
-      </article>
+      <HashRouter basename="saints">
+        <header>
+          <h2> CRUD API - ROUTES </h2>
+          <nav>
+            <NavLink to="/" activeClassName="active">Saints</NavLink>
+            <NavLink to="/add" activeClassName="active">Add</NavLink>
+          </nav>
+        </header>
+        <Switch>
+          <Route exact path="/">
+            { loading && <Loader/> }
+            { error && <Message 
+              message={`Error ${ error.status }: ${ error.statusText }`} 
+              bgColor="#DC3545"/> }
+            { db && <CrudTable 
+              data={db} 
+              setDataToEdit={setDataToEdit} 
+              deleteData={deleteData}
+            /> }
+          </Route>
+          <Route exact path="/add">
+            <CrudForm 
+              createData={createData} 
+              updateData={updateData} 
+              dataToEdit={dataToEdit} 
+              setDataToEdit={setDataToEdit} />
+          </Route>
+          <Route exact path="/edit/:id">
+            <CrudForm 
+              createData={createData} 
+              updateData={updateData} 
+              dataToEdit={dataToEdit} 
+              setDataToEdit={setDataToEdit} />
+          </Route>
+          <Route exact path="*" component={Error404} />
+        </Switch>
+      </HashRouter>
     </div>
   );
 }
