@@ -9,7 +9,7 @@ function App() {
       <a href="https://reactrouter.com/web/guides/quick-start" 
         target="_blank" rel="noreferrer">Documentation</a>
       <hr/>
-      {/* <SongSearch /> */}
+      <SongSearch />
       <hr/>
       <CrudApi /> 
       <hr/>

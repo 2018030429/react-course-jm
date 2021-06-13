@@ -4,6 +4,8 @@ import Loader from './Loader';
 import SongDetails from './SongDetails';
 import SongForm from './SongForm';
 import { helpHttp } from "../helpers/help.http";
+import { HashRouter, Link, Switch, Route } from 'react-router-dom';
+import Error404 from '../pages/Error404';
 
 const SongSearch = () => {
 
@@ -43,14 +45,29 @@ const SongSearch = () => {
 
   return (
     <div>
-      <h2> SongSearch </h2>
-      <article className="grid-1-3">
-        { loading && <Loader/> }
-        <SongForm handleSearch={ handleSearch }/>
-        { search && !loading && (
-          <SongDetails search={ search } lyric={ lyric } bio={ biography }/>
-        )}
-      </article>
+      { loading && <Loader/> }
+      <HashRouter basename="songs">
+        <header>
+          <h2> SongSearch </h2>
+          <Link to="/"> Home </Link>
+          <article className="grid-1-3">
+            <Switch>
+              <Route exact path="/">
+                <SongForm handleSearch={ handleSearch }>
+                  <h2> Song Table </h2>
+                  { search && !loading && (
+                    <SongDetails search={ search } lyric={ lyric } bio={ biography }/>
+                  )}
+                </SongForm>
+              </Route>
+              <Route exact path="/:id" >
+                <h2> Song Page </h2>
+              </Route>
+              <Route path="" children={<Error404/>}/>
+            </Switch>
+          </article>
+        </header>
+      </HashRouter>
     </div>
   )
 }
