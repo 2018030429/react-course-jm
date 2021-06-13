@@ -5,9 +5,10 @@ const initialForm = {
   song: ""
 }
 
-const SongForm = ({ handleSearch }) => {
+const SongForm = ({ handleSearch, handleSaveSong }) => {
 
   const [form, setForm] = useState(initialForm);
+  const [isDisabled, setIsDisabled] = useState(true);
   
   const hasFormEmptyValues = () => [form.artist, form.song].includes("");
 
@@ -28,6 +29,7 @@ const SongForm = ({ handleSearch }) => {
 
     handleSearch(form);
     setForm(initialForm);
+    setIsDisabled(false);
   }
 
   return (
@@ -38,6 +40,8 @@ const SongForm = ({ handleSearch }) => {
         <input type="text" name="song" placeholder="Song's name" 
           onChange={ handleChange } value={ form.song } />
         <input type="submit" value="Send" />
+        <input type="button" onClick={handleSaveSong} 
+          value="Add song" disabled={isDisabled} />
       </form>
     </div>
   )

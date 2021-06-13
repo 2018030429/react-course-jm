@@ -7,12 +7,15 @@ import { helpHttp } from "../helpers/help.http";
 import { HashRouter, Link, Switch, Route } from 'react-router-dom';
 import Error404 from '../pages/Error404';
 
+let mySongsInit = JSON.parse(localStorage.getItem('mySongs')) || [];
+
 const SongSearch = () => {
 
   const [search, setSearch] = useState(null);
   const [lyric, setLyric] = useState(null);
   const [biography, setBiography] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [mySongs, setMySongs] = useState(mySongsInit);
 
   useEffect(() => {
     if (search === null) return;
@@ -37,10 +40,20 @@ const SongSearch = () => {
 
     })();
 
-  }, [search]);
+    localStorage.setItem('mySongs', JSON.stringify(mySongs));
+
+  }, [search, mySongs]);
 
   const handleSearch = (data) => {
     setSearch(data);
+  }
+
+  const handleSaveSong = () => {
+    alert('Saving song in favorites...');
+  }
+
+  const handleDeleteSong = (id) => {
+    
   }
 
   return (
@@ -53,10 +66,10 @@ const SongSearch = () => {
           <article className="grid-1-3">
             <Switch>
               <Route exact path="/">
-                <SongForm handleSearch={ handleSearch }>
+                <SongForm handleSearch={handleSearch} handleSaveSong={handleSaveSong}>
                   <h2> Song Table </h2>
                   { search && !loading && (
-                    <SongDetails search={ search } lyric={ lyric } bio={ biography }/>
+                    <SongDetails search={search} lyric={lyric} bio={biography}/>
                   )}
                 </SongForm>
               </Route>
