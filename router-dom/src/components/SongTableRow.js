@@ -1,18 +1,23 @@
 import { useHistory } from "react-router-dom"
 
-const SongTableRow = ({ song, id, handleDeleteSong }) => {
+const SongTableRow = ({ song: { biography, search }, id, handleDeleteSong }) => {
 
   let history = useHistory();
+  let avatar = biography.artists[0].strArtistThumb;
+  let avatarStyles = {
+    width: 'auto',
+    height: '40px'
+  }
 
   return (
     <tr>
       <td>
-        <img src="https://placeimg.com/40/40/animals" alt="" />
+        <img style={avatarStyles} src={avatar} alt={search.artist} />
       </td>
-      <td>Artist name</td>
-      <td>Song name</td>
+      <td>{search.artist}</td>
+      <td>{search.song}</td>
       <td>
-        <button onClick={() => history.push(`/songs/${id}`)}>Show</button>
+        <button onClick={() => history.push(`/${id}`)}>Show</button>
         <button onClick={() => handleDeleteSong(id)}>Delete</button>
       </td>
     </tr>

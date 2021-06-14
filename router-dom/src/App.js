@@ -11,9 +11,9 @@ function App() {
       <hr/>
       <SongSearch />
       <hr/>
-      {/* <CrudApi />  */}
+      <CrudApi /> 
       <hr/>
-      {/* <BasicConcepts/> */}
+      <BasicConcepts/>
     </div>
   );
 }

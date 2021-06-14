@@ -6,7 +6,7 @@ import SongLyrics from './SongLyrics';
 
 const SongDetails = ({ search, lyric, bio }) => {
 
-  if ([lyric, bio].includes(null)) return null;
+  if ([!lyric, !bio].includes(true)) return null;
 
   return (
     <Fragment>

@@ -24,6 +24,7 @@ const SongForm = ({ handleSearch, handleSaveSong }) => {
 
     if (hasFormEmptyValues()) {
       alert("There are empty data");
+      setIsDisabled(true);
       return;
     }
 
@@ -41,7 +42,7 @@ const SongForm = ({ handleSearch, handleSaveSong }) => {
           onChange={ handleChange } value={ form.song } />
         <input type="submit" value="Send" />
         <input type="button" onClick={handleSaveSong} 
-          value="Add song" disabled={isDisabled} />
+          value="Add Song" disabled={isDisabled} />
       </form>
     </div>
   )
