@@ -3,7 +3,7 @@ import Footer from './Footer'
 import Header from './Header'
 import Main from './Main'
 
-import { MouseEvent, ChangeEvent } from "types/Event";
+import { MouseEvent, ChangeEvent, ButtonEvent } from "types/Event";
 import { Translation, Detail } from "Interfaces/Translation";
 
 const initialTheme = "light";
@@ -29,17 +29,20 @@ const translation:Translation = {
     headerDark: "Dark",
     buttonLogin: "Login",
     buttonLogout: "Close Session",
-    mainWelcome: "Welcome",
+    mainWelcome: "Welcome Guest",
     mainHello: "Hello user",
     mainContent: "My main content",
     footerTitle: "My footer"
   }
 }
 
+const initialAuth = null;
+
 const Page = () => {
   const [theme, setTheme] = useState<string>(initialTheme);
   const [language, setLanguage] = useState<string>(initialLanguage); 
   const [texts, setTexts] = useState<Detail>(translation[language as 'es'|'en']);
+  const [auth, setAuth] = useState<null|boolean>(initialAuth);
 
   const handleTheme = (e:MouseEvent) => {
     e.currentTarget.value === 'light'? setTheme('light'): setTheme('dark');
@@ -55,11 +58,16 @@ const Page = () => {
     }
   };
 
+  const handleAuth = (e:ButtonEvent) => {
+    auth? setAuth(null): setAuth(true);
+  }
+
   return (
     <div className="my-page">
       <Header theme={theme} handleTheme={handleTheme} 
-        texts={texts} handleLanguage={handleLanguage} />
-      <Main theme={theme} texts={texts} />
+        texts={texts} handleLanguage={handleLanguage} 
+        auth={auth} handleAuth={handleAuth} />
+      <Main theme={theme} texts={texts} auth={auth} />
       <Footer theme={theme} texts={texts} />
     </div>
   )

@@ -1,15 +1,17 @@
 import React from 'react';
-import { MouseEvent, ChangeEvent } from 'types/Event';
+import { MouseEvent, ChangeEvent, ButtonEvent } from 'types/Event';
 import { Detail } from "Interfaces/Translation";
 
 interface Prop {
   theme:string,
   handleTheme: (e:MouseEvent) => void,
   handleLanguage: (e:ChangeEvent) => void,
-  texts: Detail
+  handleAuth: (e:ButtonEvent) => void,
+  texts: Detail,
+  auth:null|boolean
 }
 
-const Header = ({ theme, handleTheme, handleLanguage, texts }:Prop) => {
+const Header = ({ theme, handleTheme, handleLanguage, texts, handleAuth, auth }:Prop) => {
   return (  
     <header className={theme}>
       <h2>{ texts.headerTitle }</h2>
@@ -24,8 +26,9 @@ const Header = ({ theme, handleTheme, handleLanguage, texts }:Prop) => {
       <input type="radio" name="theme" id="dark" 
         value="dark" onClick={handleTheme} />
       <label htmlFor="dark">{ texts.headerDark }</label>
-      <button>{ texts.buttonLogin }</button>
-      <button>{ texts.buttonLogout }</button>
+      <button onClick={handleAuth}>
+        { auth? texts.buttonLogout: texts.buttonLogin  }
+      </button>
     </header>
   )
 }

@@ -3,14 +3,14 @@ import { Detail } from "Interfaces/Translation";
 
 interface Prop {
   theme:string,
-  texts: Detail
+  texts:Detail,
+  auth:null|boolean
 }
 
-const Main = ({ theme, texts }:Prop) => {
+const Main = ({ theme, texts, auth }:Prop) => {
   return (
     <main className={theme}>
-      <p>{ texts.mainWelcome }</p>
-      <p>{ texts.mainHello }</p>
+      { auth? <p>{ texts.mainHello }</p> : <p>{ texts.mainWelcome }</p> }
       <p>{ texts.mainContent }</p>
     </main>
   )
