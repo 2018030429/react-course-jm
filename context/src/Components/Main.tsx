@@ -1,15 +1,17 @@
 import React from 'react'
+import { Detail } from "Interfaces/Translation";
 
 interface Prop {
-  theme:string
+  theme:string,
+  texts: Detail
 }
 
-const Main = ({ theme }:Prop) => {
+const Main = ({ theme, texts }:Prop) => {
   return (
     <main className={theme}>
-      <p>Welcome guest</p>
-      <p>Hello user</p>
-      <p>My main content</p>
+      <p>{ texts.mainWelcome }</p>
+      <p>{ texts.mainHello }</p>
+      <p>{ texts.mainContent }</p>
     </main>
   )
 }

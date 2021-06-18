@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
+import { Detail } from "Interfaces/Translation";
 
 interface Prop {
-  theme:string
+  theme:string,
+  texts: Detail
 }
 
-const Footer = ({ theme }:Prop) => {
+const Footer = ({ theme, texts }:Prop) => {
   return (
     <footer className={theme}>
-      <h4>My footer</h4>
+      <h4>{ texts.footerTitle }</h4>
     </footer>
   )
 }
