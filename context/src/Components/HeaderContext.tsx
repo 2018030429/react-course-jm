@@ -5,7 +5,6 @@ import ThemeContext from 'Context/ThemeContext';
 import LanguageContext from 'Context/LanguageContext';
 import AuthContext from 'Context/AuthContext';
 
-
 const HeaderContext:React.FC = () => {
   const { theme, handleTheme } = useContext(ThemeContext);
   const { texts, handleLanguage } = useContext(LanguageContext);

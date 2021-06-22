@@ -6,7 +6,6 @@ import LanguageContext from 'Context/LanguageContext';
 import AuthContext from 'Context/AuthContext';
 
 const MainContext:React.FC = () => {
-
   const { theme } = useContext(ThemeContext);
   const { texts } = useContext(LanguageContext);
   const { auth } = useContext(AuthContext);
