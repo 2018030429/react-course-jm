@@ -1,17 +1,15 @@
 import React, { useContext } from 'react';
-import { ButtonEvent } from 'types/Event';
+
+// * Contexts
 import ThemeContext from 'Context/ThemeContext';
 import LanguageContext from 'Context/LanguageContext';
+import AuthContext from 'Context/AuthContext';
 
-interface Prop {
-  handleAuth: (e:ButtonEvent) => void,
-  auth:null|boolean
-}
 
-const HeaderContext:React.FC<Prop> = ({ handleAuth, auth }) => {
-
+const HeaderContext:React.FC = () => {
   const { theme, handleTheme } = useContext(ThemeContext);
   const { texts, handleLanguage } = useContext(LanguageContext);
+  const { auth, handleAuth } = useContext(AuthContext);
 
   return (  
     <header className={theme}>

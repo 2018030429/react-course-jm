@@ -1,15 +1,15 @@
 import React, { useContext } from 'react'
+
+// * Contexts
 import ThemeContext from 'Context/ThemeContext';
 import LanguageContext from 'Context/LanguageContext';
+import AuthContext from 'Context/AuthContext';
 
-interface Prop {
-  auth:null|boolean
-}
-
-const MainContext:React.FC<Prop> = ({ auth }) => {
+const MainContext:React.FC = () => {
 
   const { theme } = useContext(ThemeContext);
   const { texts } = useContext(LanguageContext);
+  const { auth } = useContext(AuthContext);
 
   return (
     <main className={theme}>
