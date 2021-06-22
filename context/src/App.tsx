@@ -1,3 +1,4 @@
+import PageContext from 'Components/PageContext';
 import React, { Fragment } from 'react';
 import Page from './Components/Page';
 
@@ -9,7 +10,10 @@ function App() {
         target="_blank" 
         rel="noreferrer">
           Documentation
-      </a> <hr/>
+      </a> 
+      <hr/>
+      <PageContext />
+      <hr/>
       <Page />
     </Fragment>
   );
