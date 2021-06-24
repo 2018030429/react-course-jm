@@ -11,15 +11,15 @@ import { AuthProvider } from 'Context/AuthContext';
 const PageContext = () => {
   return (
     <div className="my-page">
-      <ThemeProvider>
-        <LanguageProvider>
-          <AuthProvider>
-            <HeaderContext />
-            <MainContext />
-          </AuthProvider>
-          <FooterContext />
-        </LanguageProvider>
-      </ThemeProvider>
+      <AuthProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+              <HeaderContext />
+              <MainContext />
+            <FooterContext />
+          </LanguageProvider>
+        </ThemeProvider>
+      </AuthProvider>
     </div>
   )
 } 
