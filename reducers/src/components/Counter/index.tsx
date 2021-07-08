@@ -6,6 +6,12 @@ type ActionReducer = { type: 'increase' | 'decrease' | 'reset' } |
 
 const initialState = { count: 0 };
 
+function init(): StateReducer {
+  return {
+    count: initialState.count + 100
+  }
+}
+
 function reducer(state:StateReducer, action:ActionReducer) {
   switch (action.type) {
     case 'increase':
@@ -35,7 +41,7 @@ function reducer(state:StateReducer, action:ActionReducer) {
 
 const Counter = () => {
   // const [count, setCount] = useState(0);
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, init);
   
   const handleClickAdd = () => dispatch({ type: 'increase' });
   const handleClickAdd5 = () => dispatch({ type: 'increase_5', payload: 5 });
