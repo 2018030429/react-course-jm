@@ -1,7 +1,7 @@
+import CrudApi from 'Components/CrudApi';
 import PageContext from 'Components/PageContext';
 import React, { Fragment } from 'react';
 import Page from './Components/Page';
-
 function App() {
   return (
     <Fragment>
@@ -11,6 +11,8 @@ function App() {
         rel="noreferrer">
           Documentation
       </a> 
+      <hr/>
+      <CrudApi />
       <hr/>
       <PageContext />
       <hr/>
